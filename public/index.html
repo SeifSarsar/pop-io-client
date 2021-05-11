@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop.io</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+   
+    <div id="game-form">
+      <input type="text" id="username-input" maxlength="20" placeholder="Username" autocomplete="false" spellcheck="false">
+      <div id="play-button">Play</div>
+    </div>
+
+    <div id="game">
+      <canvas id="canvas-background" moz-opaque></canvas>
+      <canvas id="canvas-game" moz-opaque></canvas>
+      <div class="kill-notifier"></div>
+
+      <div class="leaderboard">
+        <div class="leaderboard-row">
+          <div>#</div>
+          <div>Name</div>
+          <div>Points</div>
+          <div>Kills</div>
+        </div>
+        <div class="leaderboard-content"></div>
+      </div>
+
+      <div class="level-container">
+        <div class="level-bar" data-label="Lv. 1">
+          <div class="level-bar-content"></div>
+        </div>
+        <div class="level-points"></div>
+      </div>
+
+      <div class="skills">
+        <div class="skill">
+          <div class ="skill-name">Shield</div>
+          <div class="skill-levels"> 
+            <span class="skill-level shield"></span>
+            <span class="skill-level shield"></span>
+            <span class="skill-level shield"></span>
+            <span class="skill-level shield"></span>
+            <span class="skill-level shield"></span>
+            <span class="skill-button shield">&#43</span>
+          </div>
+        </div>
+
+        <div class="skill">
+        <div class ="skill-name">Speed</div>
+          <div class="skill-levels"> 
+            <span class="skill-level speed"></span>
+            <span class="skill-level speed"></span>
+            <span class="skill-level speed"></span>
+            <span class="skill-level speed"></span>
+            <span class="skill-level speed"></span>
+            <span class="skill-button speed">&#43</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class ="skill-name">Reload</div>
+          <div class="skill-levels"> 
+            <span class="skill-level reload"></span>
+            <span class="skill-level reload"></span>
+            <span class="skill-level reload"></span>
+            <span class="skill-level reload"></span>
+            <span class="skill-level reload"></span>
+            <span class="skill-button reload">&#43</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class ="skill-name">Bullet life</div>
+          <div class="skill-levels"> 
+            <span class="skill-level bullet"></span>
+            <span class="skill-level bullet"></span>
+            <span class="skill-level bullet"></span>
+            <span class="skill-level bullet"></span>
+            <span class="skill-level bullet"></span>
+            <span class="skill-button bullet">&#43</span>
+          </div>
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="bundle.js"></script>
+</html>
