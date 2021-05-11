@@ -15,7 +15,6 @@ export default class Game {
     this.renderer = new Renderer(this.canvas);
 
     //Set state for homepage canvas
-    this.setInitialState();
     this.addSocketListeners();
 
     this.gameLoop();
@@ -71,6 +70,4 @@ export default class Game {
     this.controller.disable();
     this.ui.die();
   }
-
-  private setInitialState() {}
 }
