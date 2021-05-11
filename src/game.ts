@@ -7,10 +7,7 @@ import UIHandler from './ui-handler';
 
 export default class Game {
   constructor() {
-    const serverURL =
-      location.hostname === 'localhost'
-        ? 'http://localhost:3000'
-        : 'https://pop-game-io.herokuapp.com/';
+    const serverURL = 'https://pop-io-server.herokuapp.com/'; //http://localhost:3000
     this.socket = io(serverURL);
     this.socket.connect();
     this.canvas = new CanvasHandler(this.socket);
