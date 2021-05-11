@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack serve --watch",
     "start": "webpack serve",
-    "build": "NODE_ENV=production webpack --mode production",
+    "build": "./node_modules/webpack/bin/webpack.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
