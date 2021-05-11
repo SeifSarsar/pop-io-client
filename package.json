@@ -4,9 +4,9 @@
   "description": "",
   "main": "./src/main.ts",
   "scripts": {
-    "start": "webpack serve",
     "start:dev": "webpack serve --watch",
-    "heroku-postbuild": "webpack --mode production",
+    "start": "ts-node index.ts",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -22,6 +22,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
+    "express": "^4.17.1",
     "nodemon": "^2.0.6",
     "socket.io-client": "^3.0.4",
     "ts-loader": "^8.0.12",
