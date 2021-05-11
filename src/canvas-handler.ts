@@ -1,5 +1,5 @@
 import { Socket } from 'socket.io-client';
-import { GAME_DIMENSION } from '../../server/src/constants';
+import { GAME_DIMENSION } from './constants';
 
 export default class CanvasHandler {
   constructor(socket: Socket) {

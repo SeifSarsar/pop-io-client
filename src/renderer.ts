@@ -1,5 +1,5 @@
 import CanvasHandler from './canvas-handler';
-import { SHIELD_OFFSET } from '../../server/src/constants';
+import { SHIELD_OFFSET } from './constants';
 import { Blob, Edge, Globe, Splash, Wall } from './models';
 import State from './state';
 
