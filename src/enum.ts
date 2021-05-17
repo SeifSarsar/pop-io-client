@@ -29,3 +29,8 @@ export enum Skill {
   Reload = 'reload',
   Bullet = 'bullet',
 }
+
+export enum WindowElement {
+  Home,
+  Respawn,
+}

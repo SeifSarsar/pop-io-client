@@ -5,19 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pop.io</title>
     <link rel="stylesheet" href="app.css" />
+    <link rel="icon" href="favicon.svg" />
   </head>
   <body>
-   
-    <div id="game-form">
-      <input type="text" id="username-input" maxlength="20" placeholder="Username" autocomplete="false" spellcheck="false">
-      <div id="play-button">Play</div>
+    <div id="window-ui">
+      <img src="logo.svg" width="200px" height="100px" />
+
+      <div id="window-home">
+        <input
+          type="text"
+          id="username-input"
+          maxlength="20"
+          placeholder="Username"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="play-button">Play</div>
+      </div>
+
+      <div id="window-respawn">
+        <div class ="window-respawn-content">
+          <div class ="window-respawn-header">You just got popped...</div>
+          <div class ="window-respawn-body">
+            <div class ="window-respawn-column">
+              <div class="window-respawn-item">Points</div>
+              <div class="window-respawn-value">10</div>
+            </div>
+            <div class ="window-respawn-column">
+              <div class="window-respawn-item">Kills</div>
+              <div class="window-respawn-value">3</div>
+            </div>
+          </div>
+        </div>
+       
+          <div class="play-button">Respawn</div>
+      </div>
     </div>
 
     <div id="game">
       <canvas id="canvas-background" moz-opaque></canvas>
       <canvas id="canvas-game" moz-opaque></canvas>
-      <div class="kill-notifier"></div>
-
+    </div>
+    
+    <div id="game-ui">
+      <div class="message-container"></div>
       <div class="leaderboard">
         <div class="leaderboard-row">
           <div>#</div>
@@ -25,7 +56,44 @@
           <div>Points</div>
           <div>Kills</div>
         </div>
-        <div class="leaderboard-content"></div>
+        <div class="leaderboard-content">
+          <div class="leaderboard-row">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="leaderboard-row">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="leaderboard-row">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="leaderboard-row">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="leaderboard-row">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="leaderboard-row user">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
 
       <div class="level-container">
@@ -84,6 +152,8 @@
           </div>
         </div>
     </div>
+
+    
   </body>
   <script type="text/javascript" src="bundle.js"></script>
 </html>

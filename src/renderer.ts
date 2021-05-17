@@ -87,8 +87,13 @@ export default class Renderer {
   }
 
   renderGlobe(globe: Globe) {
-    //Render heart
     if (globe.size === 0) return;
+
+    //Render heart
+    this.canvas.ctx.lineCap = 'round';
+    this.canvas.ctx.strokeStyle = globe.borderColor;
+    this.canvas.ctx.fillStyle = globe.color;
+
     this.canvas.ctx.beginPath();
 
     this.canvas.ctx.arc(
@@ -100,14 +105,10 @@ export default class Renderer {
     );
     this.canvas.ctx.lineWidth = 5;
 
-    this.canvas.ctx.strokeStyle = globe.borderColor;
-    this.canvas.ctx.fillStyle = globe.color;
     this.canvas.ctx.fill();
     this.canvas.ctx.stroke();
 
     //Render shield
-    this.canvas.ctx.lineCap = 'round';
-    this.canvas.ctx.strokeStyle = globe.borderColor;
     this.canvas.ctx.beginPath();
     this.canvas.ctx.arc(
       globe.position.x,
@@ -138,6 +139,7 @@ export default class Renderer {
 
     splashes.forEach((splash) => {
       this.canvas.ctx.strokeStyle = splash.color;
+      this.canvas.ctx.beginPath();
       splash.lines.forEach((line: Edge) => {
         this.canvas.ctx.moveTo(line.p1.x, line.p1.y);
         this.canvas.ctx.lineTo(line.p2.x, line.p2.y);

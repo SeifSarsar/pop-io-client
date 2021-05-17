@@ -3,15 +3,16 @@ import { io, Socket } from 'socket.io-client';
 import State from './state';
 import CanvasHandler from './canvas-handler';
 import Renderer from './renderer';
-import UIHandler from './ui-handler';
+import UIHandler from './ui/ui-handler';
 
 export default class Game {
   constructor() {
-    const serverURL = 'https://pop-io-server.herokuapp.com/'; //http://localhost:3000
+    const serverURL = 'https://pop-io-server.herokuapp.com/';
+    //const serverURL = 'http://localhost:3000';
     this.socket = io(serverURL);
     this.socket.connect();
     this.canvas = new CanvasHandler(this.socket);
-    this.ui = new UIHandler(this.canvas, this.socket);
+    this.ui = new UIHandler(this.socket);
     this.renderer = new Renderer(this.canvas);
 
     //Set state for homepage canvas
@@ -22,7 +23,7 @@ export default class Game {
     this.controller = new Controller(this.canvas, this.socket);
 
     window.onbeforeunload = () => {
-      this.socket.emit('leave');
+      this.socket.emit('leave', this.roomId);
       this.socket.disconnect();
     };
   }
@@ -33,17 +34,15 @@ export default class Game {
   private renderer: Renderer;
   private controller: Controller;
   private state: State = new State();
+  private roomId: string;
   private addSocketListeners() {
     this.socket.on('start', this.start.bind(this));
     this.socket.on('update', this.updateState.bind(this));
-    this.socket.on('xp', this.ui.updateLevelManager.bind(this.ui));
-    this.socket.on('usePoint', this.ui.updateLevelManagerPoints.bind(this.ui));
-    this.socket.on('kill', this.ui.notifyKill.bind(this.ui));
-    this.socket.on('leaderboard', this.ui.updateLeaderboard.bind(this.ui));
     this.socket.on('die', this.die.bind(this));
   }
 
-  private start(data: State) {
+  private start(roomId: string, data: State) {
+    this.roomId = roomId;
     this.state = data;
     this.controller.enable();
   }

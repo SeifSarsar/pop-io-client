@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="55" height="55" >
+ <circle cx="25" cy="25" r="20" stroke="rgba(255, 81, 84,1)" stroke-width="3" fill="rgba(255, 81, 84, 0.5)" />
+
+<path stroke="rgba(255, 81, 84,1)"  stroke-width="3" fill="none" d="M47 10 A25 25, 0, 0 1, 47 40"></path>
+</svg>
