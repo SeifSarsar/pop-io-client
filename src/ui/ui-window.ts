@@ -32,9 +32,11 @@ export default class WindowUI {
     this.activeElement = WindowElement.Home;
   }
 
-  showRespawn() {
+  showRespawn(xp: number, kills: number, username?: string) {
     this.show();
-    this.windowRespawn.show();
+    if (username)
+      this.windowRespawn.show(`You just got popped by ${username}!`, xp, kills);
+    else this.windowRespawn.show(`You just popped yourself...`, xp, kills);
     this.activeElement = WindowElement.Respawn;
   }
 

@@ -65,8 +65,8 @@ export default class Game {
     this.canvas.restore();
   }
 
-  private die() {
+  private die(xp: number, kills: number, username?: string) {
     this.controller.disable();
-    this.ui.die();
+    this.ui.die(xp, kills, username);
   }
 }

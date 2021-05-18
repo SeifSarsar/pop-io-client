@@ -55,11 +55,12 @@ export default class LevelUI {
   }
 
   update(points: number, lvl?: number, barPercent?: number) {
-    this.levelPointsHTML.innerHTML = points.toString();
+    this.levelPointsHTML.textContent = points.toString();
     this.updateView(points);
-
-    if (lvl) this.barHtml.setAttribute('data-label', `Lv. ${lvl}`);
-    if (barPercent) this.barContentHtml.style.height = `${barPercent}%`;
+    if (lvl !== undefined)
+      this.barHtml.setAttribute('data-label', `Lv. ${lvl}`);
+    if (barPercent !== undefined)
+      this.barContentHtml.style.height = `${barPercent}%`;
   }
 
   updateView(points: number) {
@@ -78,7 +79,7 @@ export default class LevelUI {
     this.levelPointsHTML.style.display = 'none';
 
     this.skillsHtml.style.opacity = '0';
-    this.levelPointsHTML.innerHTML = '0';
+    this.levelPointsHTML.textContent = '0';
     this.barContentHtml.style.height = `0%`;
 
     this.barHtml.setAttribute('data-label', `Lv. 1`);

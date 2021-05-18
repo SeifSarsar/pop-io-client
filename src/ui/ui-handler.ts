@@ -32,9 +32,9 @@ export default class UIHandler {
     this.gameUI.show();
   }
 
-  die() {
+  die(xp: number, kills: number, username?: string) {
     this.gameUI.levelUI.reset();
     this.gameUI.hide();
-    this.windowUI.showRespawn();
+    this.windowUI.showRespawn(xp, kills, username);
   }
 }

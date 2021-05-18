@@ -10,8 +10,6 @@ export default class CanvasHandler {
     addEventListener('resize', () => {
       this.resize(socket);
     });
-
-    console.log('too');
   }
 
   canvasHTML = document.getElementById('canvas-game') as HTMLCanvasElement;
