@@ -44,7 +44,7 @@ export default class GameUI {
   }
 
   hide() {
-    this.html.style.display = 'none';
     this.levelUI.reset();
+    this.html.style.display = 'none';
   }
 }

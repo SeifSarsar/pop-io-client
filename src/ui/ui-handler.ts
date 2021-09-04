@@ -18,9 +18,19 @@ export default class UIHandler {
   username: string;
 
   canvasHTML = document.getElementById('canvas-game') as HTMLCanvasElement;
+  canvasBackgroundHTML = document.getElementById(
+    'canvas-background'
+  ) as HTMLCanvasElement;
 
   play(username?: string) {
     if (username) this.username = username;
+
+    if (
+      this.canvasBackgroundHTML.style.backgroundImage !== "url('./grid.png')"
+    ) {
+      this.canvasBackgroundHTML.style.backgroundImage = "url('./grid.png')";
+      this.canvasBackgroundHTML.style.backgroundSize = 'auto';
+    }
 
     this.socket.emit('join', {
       username: this.username,
@@ -33,8 +43,8 @@ export default class UIHandler {
   }
 
   die(xp: number, kills: number, username?: string) {
-    this.gameUI.levelUI.reset();
     this.gameUI.hide();
     this.windowUI.showRespawn(xp, kills, username);
+    if (!username) this.gameUI.showMessage(`You have popped yourself!`);
   }
 }

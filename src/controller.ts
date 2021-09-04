@@ -10,6 +10,7 @@ export default class Controller {
 
   private canvas: CanvasHandler;
   private socket: Socket;
+  private directions = new Set<Direction>();
 
   private keydownListener = this.keydown.bind(this);
   private keyupListener = this.keyup.bind(this);
@@ -70,8 +71,10 @@ export default class Controller {
         direction = Direction.Left;
         break;
     }
-    if (direction) {
+
+    if (direction && !this.directions.has(direction)) {
       this.socket.emit('keydown', this.socket.id, direction);
+      this.directions.add(direction);
     }
   }
 
@@ -95,8 +98,10 @@ export default class Controller {
         direction = Direction.Left;
         break;
     }
+
     if (direction) {
       this.socket.emit('keyup', this.socket.id, direction);
+      this.directions.delete(direction);
     }
   }
 

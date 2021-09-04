@@ -10,4 +10,7 @@ window.onload = () => {
   let main = new Main();
   main.setup();
   document.addEventListener('contextmenu', (event) => event.preventDefault());
+  document.addEventListener('wheel', (event) => event.preventDefault(), {
+    passive: false,
+  });
 };

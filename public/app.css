@@ -54,9 +54,10 @@ body {
 }
 
 #canvas-background {
-  background-image: url('./grid.png');
+  background-image: url('./home.png');
   background-color: rgb(10, 10, 20);
   pointer-events: none;
+  background-size: cover;
 }
 
 /*Window-ui*/

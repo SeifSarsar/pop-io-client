@@ -25,6 +25,7 @@ export default class Renderer {
   renderEnergies(energies: Blob[]) {
     energies.forEach((energy) => {
       this.canvas.ctx.beginPath();
+      this.canvas.ctx.fillStyle = energy.color;
       this.canvas.ctx.arc(
         energy.position.x,
         energy.position.y,
@@ -32,16 +33,14 @@ export default class Renderer {
         0,
         2 * Math.PI
       );
-      this.canvas.ctx.fillStyle = energy.color;
       this.canvas.ctx.fill();
-      this.canvas.ctx.closePath();
     });
   }
 
   renderBullets(bullets: Blob[]) {
+    this.canvas.ctx.beginPath();
+    this.canvas.ctx.fillStyle = 'white';
     bullets.forEach((bullet) => {
-      this.canvas.ctx.fillStyle = bullet.color;
-      this.canvas.ctx.beginPath();
       this.canvas.ctx.arc(
         bullet.position.x,
         bullet.position.y,
@@ -49,12 +48,13 @@ export default class Renderer {
         0,
         2 * Math.PI
       );
-      this.canvas.ctx.fill();
       this.canvas.ctx.closePath();
     });
+    this.canvas.ctx.fill();
   }
 
   renderWalls(walls: Wall[]) {
+    this.canvas.ctx.beginPath();
     this.canvas.ctx.lineJoin = 'round';
     this.canvas.ctx.strokeStyle = '#c700c7';
     this.canvas.ctx.fillStyle = '#750075';
@@ -62,7 +62,6 @@ export default class Renderer {
 
     walls.forEach((wall) => {
       const firstPoint = wall.edges[0].p1;
-      this.canvas.ctx.beginPath();
       this.canvas.ctx.moveTo(firstPoint.x, firstPoint.y);
       if (wall.edges.length === 1) {
         const secondPoint = wall.edges[0].p2;
@@ -72,15 +71,18 @@ export default class Renderer {
           if (i < wall.edges.length - 1)
             this.canvas.ctx.lineTo(edge.p2.x, edge.p2.y);
         });
-
-        this.canvas.ctx.closePath();
-        this.canvas.ctx.fill();
       }
-      this.canvas.ctx.stroke();
+      this.canvas.ctx.closePath();
     });
+    this.canvas.ctx.fill();
+    this.canvas.ctx.stroke();
   }
 
   renderGlobes(globes: Globe[]) {
+    this.canvas.ctx.lineCap = 'round';
+    this.canvas.ctx.textAlign = 'center';
+    this.canvas.ctx.textBaseline = 'middle';
+    this.canvas.ctx.font = '12px Segoe UI';
     globes.forEach((globe) => {
       this.renderGlobe(globe);
     });
@@ -90,7 +92,6 @@ export default class Renderer {
     if (globe.size === 0) return;
 
     //Render heart
-    this.canvas.ctx.lineCap = 'round';
     this.canvas.ctx.strokeStyle = globe.borderColor;
     this.canvas.ctx.fillStyle = globe.color;
 
@@ -124,9 +125,6 @@ export default class Renderer {
     if (globe.username === 'UFO') return;
 
     this.canvas.ctx.fillStyle = globe.borderColor;
-    this.canvas.ctx.textAlign = 'center';
-    this.canvas.ctx.textBaseline = 'middle';
-    this.canvas.ctx.font = '12px Segoe UI';
     this.canvas.ctx.fillText(
       globe.username,
       globe.position.x,
@@ -136,10 +134,9 @@ export default class Renderer {
 
   renderSplashes(splashes: Splash[]) {
     this.canvas.ctx.lineWidth = 2;
-
     splashes.forEach((splash) => {
-      this.canvas.ctx.strokeStyle = splash.color;
       this.canvas.ctx.beginPath();
+      this.canvas.ctx.strokeStyle = splash.color;
       splash.lines.forEach((line: Edge) => {
         this.canvas.ctx.moveTo(line.p1.x, line.p1.y);
         this.canvas.ctx.lineTo(line.p2.x, line.p2.y);

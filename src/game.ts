@@ -15,10 +15,7 @@ export default class Game {
     this.ui = new UIHandler(this.socket);
     this.renderer = new Renderer(this.canvas);
 
-    //Set state for homepage canvas
     this.addSocketListeners();
-
-    this.gameLoop();
 
     this.controller = new Controller(this.canvas, this.socket);
 
@@ -44,6 +41,7 @@ export default class Game {
   private start(roomId: string, data: State) {
     this.roomId = roomId;
     this.state = data;
+    this.gameLoop();
     this.controller.enable();
   }
 
